@@ -25,7 +25,6 @@ export class MessageResolver {
   ): Promise<Message> {
     const message = await this.messageService.create(newMessageData);
     publisher(message);
-    subscriber();
     return message;
   }
 
