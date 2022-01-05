@@ -24,6 +24,7 @@
 
 ## Description
 
+**IOT APP** This is a basic implementation of an iot message broker using MQTT and GraphQL
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
 ## Installation
@@ -45,6 +46,60 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
+## Implementation Approach
+The request and response data in memory in a mock database.
+
+
+## Technology Stack
+
+### Built With
+
+- [Node.js](https://nodejs.org/) - Javascript runtime
+- [NestJs](https://docs.nestjs.com/)- Server-side Framework
+- [ApolloGraphQl](https://www.apollographql.com/docs/) - GraphQL Communication Layer
+- [MQTT](https://www.npmjs.com/package/mqtt#publish) - NPM MQTT package
+- [Mosquitto](https://mosquitto.org/) - MQTT Broker
+## GraphQL API Architecture
+
+```
+http://localhost:3000/graphql
+```
+ To send a message to mqtt broker
+
+ 
+ Mutation
+ ```
+ mutation addMessage ($newMessageData: MessageInput!) {
+    addMessage (newMessageData: $newMessageData) {
+      title,
+      description
+    }
+  }
+  ```
+
+  Pass the Query Variables as follows
+  ```
+  {
+    "newMessageData": {
+      "id": "124",
+      "title": "dim4 sample",
+      "description":"sample description"
+    }
+  }
+ ```
+
+ Query
+ ```
+ query message {
+    message(id: "124") {
+     title
+    }
+  }
+ ```
+
+ ## Improvements
+ 1. Setup a database connection and log messages from publisher to DB
+ 2. Write unit/integration tests
 ## Test
 
 ```bash
@@ -64,9 +119,8 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 ## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- Author - [Pascal Ulor](https://twitter.com/pc_codes)
+- Website - [https://www.pascalulor.com/](https://www.pascalulor.com/)
 
 ## License
 
