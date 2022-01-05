@@ -6,9 +6,9 @@ export const publisher = (message) => {
   return client.on('connect', () => {
     const messageString = JSON.stringify(message);
     if (message.title) {
-      client.publish(EVENTS.MESSAGE, `Valid Message: ${message.title}`);
+      client.publish(EVENTS.MESSAGE, `${messageString}`);
     } else {
-      client.publish(EVENTS.BAD_REQUEST, `Invalid Message: ${messageString}`);
+      client.publish(EVENTS.BAD_REQUEST, `${messageString}`);
     }
   });
 };

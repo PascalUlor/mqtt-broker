@@ -47,7 +47,9 @@ $ npm run start:prod
 ```
 
 ## Implementation Approach
-The request and response data in memory in a mock database.
+The request and response data are stored in memory in a mock database.
+When a request is made the **publisher** publishes the request then the **subscriber**
+writes the request to a mock database.
 
 
 ## Technology Stack
@@ -92,6 +94,17 @@ http://localhost:3000/graphql
  ```
  query message {
     message(id: "124") {
+     title
+    }
+  }
+ ```
+
+ Query to get all messages and limit number of response
+**NOTE** passing limit:0 would return all messages
+limit: 10 returns 10 messages
+ ```
+ query allMessages {
+    allMessages(limit: 0) {
      title
     }
   }

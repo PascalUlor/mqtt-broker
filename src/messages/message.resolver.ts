@@ -19,12 +19,22 @@ export class MessageResolver {
     return message;
   }
 
+  @Query((returns) => [Message])
+  async allMessages(@Args('limit') limit: number): Promise<Message[]> {
+    const messages = await this.messageService.getAllMessage(limit);
+    if (!messages.length) {
+      return [];
+    }
+    return messages;
+  }
+
   @Mutation((returns) => Message)
   async addMessage(
     @Args('newMessageData') newMessageData: MessageInput,
   ): Promise<Message> {
     const message = await this.messageService.create(newMessageData);
     publisher(message);
+    subscriber();
     return message;
   }
 }

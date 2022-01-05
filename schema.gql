@@ -20,5 +20,6 @@ type Mutation {
 }
 
 type Query {
+  allMessages(limit: Float!): [Message!]!
   message(id: String!): Message!
 }
