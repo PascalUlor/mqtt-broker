@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { customAlphabet } from 'nanoid'
+import { customAlphabet } from 'nanoid';
 import { MessageInput } from './dto/message-input';
 import { Message } from './models/message.model';
 import { mockDatabase, validationDatabase } from './mock';
@@ -7,7 +7,7 @@ import { mockDatabase, validationDatabase } from './mock';
 @Injectable()
 export class MessageService {
   async create(data: MessageInput): Promise<Message> {
-    const nanoid = customAlphabet('1234567890abcdef', 10);
+    const nanoid = customAlphabet('1234567890abcdefghijklmnopqrstuvwxyz', 10);
     const payload = { id: nanoid(), ...data };
     mockDatabase.push(payload);
     return payload;
