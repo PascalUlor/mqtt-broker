@@ -28,6 +28,15 @@ export class MessageResolver {
     return messages;
   }
 
+  @Query((returns) => [Message])
+  async getResponse(@Args('limit') limit: number): Promise<Message[]> {
+    const messages = await this.messageService.getResponse(limit);
+    if (!messages.length) {
+      return [];
+    }
+    return messages;
+  }
+
   @Mutation((returns) => Message)
   async addMessage(
     @Args('newMessageData') newMessageData: MessageInput,

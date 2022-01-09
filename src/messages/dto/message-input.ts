@@ -2,10 +2,7 @@ import { Field, InputType, ID } from '@nestjs/graphql';
 
 @InputType()
 export class MessageInput {
-  @Field()
-  id: string;
-
-  @Field()
+  @Field({ nullable: true })
   title: string;
 
   @Field({ nullable: true })
